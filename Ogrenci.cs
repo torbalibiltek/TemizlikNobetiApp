@@ -15,5 +15,13 @@ namespace TemizlikNobetiApp
 
         //Sinif modelinden gelen Id ===> SinifId olacak
         public string SinifId { get; set; }
+
+        public string AdSoyad
+        {
+            get
+            {
+                return Ad + " " + Soyad;
+            }
+        }
     }
 }

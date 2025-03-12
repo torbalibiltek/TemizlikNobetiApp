@@ -31,6 +31,8 @@
             cbSinif = new ComboBox();
             label1 = new Label();
             btnYeniSinif = new Button();
+            btnYeniOgrenci = new Button();
+            lbOgrenciler = new ListBox();
             SuspendLayout();
             // 
             // cbSinif
@@ -40,6 +42,7 @@
             cbSinif.Name = "cbSinif";
             cbSinif.Size = new Size(121, 23);
             cbSinif.TabIndex = 0;
+            cbSinif.SelectedValueChanged += cbSinif_SelectedValueChanged;
             // 
             // label1
             // 
@@ -61,11 +64,33 @@
             btnYeniSinif.UseVisualStyleBackColor = false;
             btnYeniSinif.Click += btnYeniSinif_Click;
             // 
+            // btnYeniOgrenci
+            // 
+            btnYeniOgrenci.BackColor = Color.FromArgb(128, 255, 128);
+            btnYeniOgrenci.Location = new Point(205, 376);
+            btnYeniOgrenci.Name = "btnYeniOgrenci";
+            btnYeniOgrenci.Size = new Size(132, 41);
+            btnYeniOgrenci.TabIndex = 2;
+            btnYeniOgrenci.Text = "Yeni Öğrenci";
+            btnYeniOgrenci.UseVisualStyleBackColor = false;
+            btnYeniOgrenci.Click += btnYeniOgrenci_Click;
+            // 
+            // lbOgrenciler
+            // 
+            lbOgrenciler.FormattingEnabled = true;
+            lbOgrenciler.ItemHeight = 15;
+            lbOgrenciler.Location = new Point(25, 94);
+            lbOgrenciler.Name = "lbOgrenciler";
+            lbOgrenciler.Size = new Size(184, 259);
+            lbOgrenciler.TabIndex = 3;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lbOgrenciler);
+            Controls.Add(btnYeniOgrenci);
             Controls.Add(btnYeniSinif);
             Controls.Add(label1);
             Controls.Add(cbSinif);
@@ -80,5 +105,7 @@
         private ComboBox cbSinif;
         private Label label1;
         private Button btnYeniSinif;
+        private Button btnYeniOgrenci;
+        private ListBox lbOgrenciler;
     }
 }
