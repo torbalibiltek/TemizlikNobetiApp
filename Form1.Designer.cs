@@ -33,6 +33,13 @@
             btnYeniSinif = new Button();
             btnYeniOgrenci = new Button();
             lbOgrenciler = new ListBox();
+            panel1 = new Panel();
+            button3 = new Button();
+            btnCikar = new Button();
+            btnAta = new Button();
+            label2 = new Label();
+            lbSecilenler = new ListBox();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // cbSinif
@@ -84,11 +91,71 @@
             lbOgrenciler.Size = new Size(184, 259);
             lbOgrenciler.TabIndex = 3;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(button3);
+            panel1.Controls.Add(btnCikar);
+            panel1.Controls.Add(btnAta);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(lbSecilenler);
+            panel1.Location = new Point(254, 94);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(423, 257);
+            panel1.TabIndex = 4;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(321, 211);
+            button3.Name = "button3";
+            button3.Size = new Size(75, 23);
+            button3.TabIndex = 2;
+            button3.Text = "Onayla";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // btnCikar
+            // 
+            btnCikar.Location = new Point(19, 86);
+            btnCikar.Name = "btnCikar";
+            btnCikar.Size = new Size(75, 23);
+            btnCikar.TabIndex = 2;
+            btnCikar.Text = "< Çıkar ";
+            btnCikar.UseVisualStyleBackColor = true;
+            btnCikar.Click += btnCikar_Click;
+            // 
+            // btnAta
+            // 
+            btnAta.Location = new Point(19, 57);
+            btnAta.Name = "btnAta";
+            btnAta.Size = new Size(75, 23);
+            btnAta.TabIndex = 2;
+            btnAta.Text = "Ata >";
+            btnAta.UseVisualStyleBackColor = true;
+            btnAta.Click += btnAta_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(122, 18);
+            label2.Name = "label2";
+            label2.Size = new Size(146, 15);
+            label2.TabIndex = 1;
+            label2.Text = "Bugün Temizlik Yapacaklar";
+            // 
+            // lbSecilenler
+            // 
+            lbSecilenler.FormattingEnabled = true;
+            lbSecilenler.ItemHeight = 15;
+            lbSecilenler.Location = new Point(122, 36);
+            lbSecilenler.Name = "lbSecilenler";
+            lbSecilenler.Size = new Size(274, 169);
+            lbSecilenler.TabIndex = 0;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(panel1);
             Controls.Add(lbOgrenciler);
             Controls.Add(btnYeniOgrenci);
             Controls.Add(btnYeniSinif);
@@ -96,6 +163,8 @@
             Controls.Add(cbSinif);
             Name = "Form1";
             Text = "Form1";
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -107,5 +176,11 @@
         private Button btnYeniSinif;
         private Button btnYeniOgrenci;
         private ListBox lbOgrenciler;
+        private Panel panel1;
+        private Button button3;
+        private Button btnCikar;
+        private Button btnAta;
+        private Label label2;
+        private ListBox lbSecilenler;
     }
 }
