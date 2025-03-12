@@ -15,6 +15,17 @@ namespace TemizlikNobetiApp
         public FrmYeniSinif()
         {
             InitializeComponent();
+
+        }
+
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            Sinif yeni = new();
+            yeni.Ad = txtSinifAd.Text;
+            KayitYoneticisi.Siniflar.Add(yeni);
+            KayitYoneticisi.Kaydet();
+            DialogResult = DialogResult.OK;//Diyalog Formunu Kapatır
+            //Form kapatılırken geriye cevap "OK" döner
         }
     }
 }

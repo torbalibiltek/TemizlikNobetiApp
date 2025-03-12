@@ -59,6 +59,7 @@
             btnYeniSinif.TabIndex = 2;
             btnYeniSinif.Text = "Yeni Sınıf";
             btnYeniSinif.UseVisualStyleBackColor = false;
+            btnYeniSinif.Click += btnYeniSinif_Click;
             // 
             // Form1
             // 
