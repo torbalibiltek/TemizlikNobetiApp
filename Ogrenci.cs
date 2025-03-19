@@ -20,7 +20,20 @@ namespace TemizlikNobetiApp
         {
             get
             {
-                return Ad + " " + Soyad;
+                return $"{Ad} {Soyad} (TP: {TemizlikPuani} )";
+            }
+        }
+
+        public int TemizlikPuani
+        {
+            get
+            {
+                //return 0;
+                //Bu öğrencinin id sini temizlik kayitlari içinde say
+                int sayi = KayitYoneticisi.TemizlikKayitlari.
+                    Count(x => x.OgrenciId == Id);
+
+                return sayi;
             }
         }
     }

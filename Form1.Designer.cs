@@ -34,11 +34,14 @@
             btnYeniOgrenci = new Button();
             lbOgrenciler = new ListBox();
             panel1 = new Panel();
-            button3 = new Button();
+            dtpTarih = new DateTimePicker();
+            btnOnayla = new Button();
             btnCikar = new Button();
             btnAta = new Button();
             label2 = new Label();
             lbSecilenler = new ListBox();
+            lblBuHaftaSira = new Label();
+            btnSec = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -93,7 +96,8 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(button3);
+            panel1.Controls.Add(dtpTarih);
+            panel1.Controls.Add(btnOnayla);
             panel1.Controls.Add(btnCikar);
             panel1.Controls.Add(btnAta);
             panel1.Controls.Add(label2);
@@ -103,14 +107,22 @@
             panel1.Size = new Size(423, 257);
             panel1.TabIndex = 4;
             // 
-            // button3
+            // dtpTarih
             // 
-            button3.Location = new Point(321, 211);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 2;
-            button3.Text = "Onayla";
-            button3.UseVisualStyleBackColor = true;
+            dtpTarih.Location = new Point(115, 211);
+            dtpTarih.Name = "dtpTarih";
+            dtpTarih.Size = new Size(200, 23);
+            dtpTarih.TabIndex = 3;
+            // 
+            // btnOnayla
+            // 
+            btnOnayla.Location = new Point(321, 211);
+            btnOnayla.Name = "btnOnayla";
+            btnOnayla.Size = new Size(75, 23);
+            btnOnayla.TabIndex = 2;
+            btnOnayla.Text = "Onayla";
+            btnOnayla.UseVisualStyleBackColor = true;
+            btnOnayla.Click += btnOnayla_Click;
             // 
             // btnCikar
             // 
@@ -145,16 +157,38 @@
             // 
             lbSecilenler.FormattingEnabled = true;
             lbSecilenler.ItemHeight = 15;
-            lbSecilenler.Location = new Point(122, 36);
+            lbSecilenler.Location = new Point(115, 36);
             lbSecilenler.Name = "lbSecilenler";
-            lbSecilenler.Size = new Size(274, 169);
+            lbSecilenler.Size = new Size(281, 169);
             lbSecilenler.TabIndex = 0;
+            // 
+            // lblBuHaftaSira
+            // 
+            lblBuHaftaSira.BackColor = Color.Orange;
+            lblBuHaftaSira.Font = new Font("Segoe UI", 12F);
+            lblBuHaftaSira.Location = new Point(256, 9);
+            lblBuHaftaSira.Name = "lblBuHaftaSira";
+            lblBuHaftaSira.Size = new Size(415, 63);
+            lblBuHaftaSira.TabIndex = 5;
+            lblBuHaftaSira.Text = "Bu haftaki Temizlik Sırası";
+            // 
+            // btnSec
+            // 
+            btnSec.Location = new Point(199, 40);
+            btnSec.Name = "btnSec";
+            btnSec.Size = new Size(51, 23);
+            btnSec.TabIndex = 6;
+            btnSec.Text = "Seç";
+            btnSec.UseVisualStyleBackColor = true;
+            btnSec.Click += btnSec_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnSec);
+            Controls.Add(lblBuHaftaSira);
             Controls.Add(panel1);
             Controls.Add(lbOgrenciler);
             Controls.Add(btnYeniOgrenci);
@@ -163,6 +197,7 @@
             Controls.Add(cbSinif);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -177,10 +212,13 @@
         private Button btnYeniOgrenci;
         private ListBox lbOgrenciler;
         private Panel panel1;
-        private Button button3;
+        private Button btnOnayla;
         private Button btnCikar;
         private Button btnAta;
         private Label label2;
         private ListBox lbSecilenler;
+        private DateTimePicker dtpTarih;
+        private Label lblBuHaftaSira;
+        private Button btnSec;
     }
 }

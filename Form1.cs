@@ -84,8 +84,8 @@ namespace TemizlikNobetiApp
 
             if (ogr != null)
             {
-                
-                if(SeciliOgrenciListesi.Contains(ogr))
+
+                if (SeciliOgrenciListesi.Contains(ogr))
                 {
                     MessageBox.Show("Öðrenci zaten seçili");
                     return;
@@ -102,9 +102,64 @@ namespace TemizlikNobetiApp
             //Alamazsan null deðer ver
             Ogrenci ogr = lbSecilenler.SelectedItem as Ogrenci;
 
-            if(ogr!=null)
+            if (ogr != null)
             {
                 SeciliOgrenciListesi.Remove(ogr);
+            }
+        }
+
+        private void btnOnayla_Click(object sender, EventArgs e)
+        {
+            if (SeciliOgrenciListesi.Count == 0)
+            {
+                MessageBox.Show("Öðrenci seçimi yapýnýz");
+                return;
+            }
+
+            //Temizlik kaydý oluþtur
+            foreach (Ogrenci ogr in SeciliOgrenciListesi)
+            {
+                TemizlikKaydi kayit = new();
+                kayit.Id = Guid.NewGuid().ToString();
+                kayit.OgrenciId = ogr.Id;
+                kayit.Tarih = dtpTarih.Value;
+
+                KayitYoneticisi.TemizlikKayitlari.Add(kayit);
+            }
+
+            SeciliOgrenciListesi.Clear();
+
+            KayitYoneticisi.Kaydet();
+            Filtrele();
+            MessageBox.Show("Kayýt oluþturuldu");
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSec_Click(object sender, EventArgs e)
+        {
+            if (cbSinif.SelectedValue == null)
+            {
+                //Sýnýf seçili deðilse
+                lbOgrenciler.DataSource = null;
+                return;
+            }
+
+            //Sýnýf seçili
+            string sinifId = cbSinif.SelectedValue.ToString();
+
+            var liste = KayitYoneticisi.Ogrenciler
+                .Where(x => x.SinifId == sinifId)
+                .OrderBy(x => x.TemizlikPuani)
+                .Take(2);
+            lblBuHaftaSira.Text = "Bu haftaki Sýra";
+
+            foreach (Ogrenci ogr in liste)
+            {
+                lblBuHaftaSira.Text += $"{ogr.AdSoyad}";
             }
         }
     }
