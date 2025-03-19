@@ -74,6 +74,7 @@ namespace TemizlikNobetiApp
         private void cbSinif_SelectedValueChanged(object sender, EventArgs e)
         {
             Filtrele();
+            BuHaftaTemizlikYapacaklar();
         }
 
         private void btnAta_Click(object sender, EventArgs e)
@@ -131,6 +132,7 @@ namespace TemizlikNobetiApp
 
             KayitYoneticisi.Kaydet();
             Filtrele();
+            BuHaftaTemizlikYapacaklar();
             MessageBox.Show("Kayýt oluþturuldu");
         }
 
@@ -138,7 +140,34 @@ namespace TemizlikNobetiApp
         {
 
         }
+        void BuHaftaTemizlikYapacaklar()
+        {
+            if (cbSinif.SelectedValue == null)
+            {
+                //Sýnýf seçili deðilse
+                lbOgrenciler.DataSource = null;
+                return;
+            }
 
+            //Sýnýf seçili
+            string sinifId = cbSinif.SelectedValue.ToString();
+
+            var liste = KayitYoneticisi.Ogrenciler
+                .Where(x => x.SinifId == sinifId)
+                .OrderBy(x => x.TemizlikPuani)
+                .Take(2);
+            lblBuHaftaSira.Text = "Bu haftaki Sýra:\n";
+
+            if (liste.Count() == 0)
+            {
+                lblBuHaftaSira.Text += "Temizlik Yapacak Kiþi Yok";
+            }
+
+            foreach (Ogrenci ogr in liste)
+            {
+                lblBuHaftaSira.Text += $"{ogr.AdSoyad}\n";
+            }
+        }
         private void btnSec_Click(object sender, EventArgs e)
         {
             if (cbSinif.SelectedValue == null)
@@ -155,12 +184,18 @@ namespace TemizlikNobetiApp
                 .Where(x => x.SinifId == sinifId)
                 .OrderBy(x => x.TemizlikPuani)
                 .Take(2);
-            lblBuHaftaSira.Text = "Bu haftaki Sýra";
 
             foreach (Ogrenci ogr in liste)
             {
-                lblBuHaftaSira.Text += $"{ogr.AdSoyad}";
+                if (!SeciliOgrenciListesi.Contains(ogr))
+                    SeciliOgrenciListesi.Add(ogr);
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            lblTarih.Text = $"Bugün {dt:dd} {dt:MMMM} {dt:yyyy} Saat: {dt:HH}:{dt:mm}";
         }
     }
 }
